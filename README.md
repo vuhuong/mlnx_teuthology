@@ -53,11 +53,15 @@ The runner host and all cluster nodes must be running:
 
   ubuntu@all-host:~# sudo apt-get install binutils libaio1 libboost-system1.54.0 libboost-thread1.54.0 libcrypto++9 libgoogle-perftools4 libjs-jquery libleveldb1 libreadline5 libsnappy1 libtcmalloc-minimal4 libunwind8 python-blinker python-flask python-itsdangerous python-jinja2 python-markupsafe python-pyinotify python-werkzeug xfsprogs libfcgi0ldbl gdebi-core python3-chardet python3-debian python3-six gdisk cryptsetup-bin  cryptsetup syslinux libffi-dev libssl-dev qemu-utils libyaml-dev libev-dev
 
+
 3.	Install and configure Teuthology
+
 3.1	Install Teuthology on runner-host only
+
 •	Teuthology should be installed on the runner-host
 •	Runner-host should have enough storage especially /tmp directory
 •	Clone this project to home directory $HOME in runner-host
+
   ubuntu@runner-host:~# cd $HOME
   ubuntu@runner-host:~# git clone https://github.com/vuhuong/mlnx_teuthology
 
