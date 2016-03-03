@@ -49,15 +49,13 @@ class Teuthology():
             self.tls_obj = testlinklib.Testlink()
 
     def parse_runlist(self):
-        if self.bat == 'fvt_inktank':
-            self.parse_fvt_inktank()
-        elif self.bat == 'fvt_storm':
-            self.parse_bvt()
+        if self.bat == 'ceph_qa':
+            self.parse_ceph_qa()
         elif self.bat == 'bvt':
             self.parse_bvt()
 
 
-    def parse_fvt_inktank(self):
+    def parse_ceph_qa(self):
         patter_obj = re.compile('clusters')
         list_of_testcase = []
         list_of_testcase = self.read_eachline(self.runlist)
@@ -233,12 +231,10 @@ class Teuthology():
         to_add_list = []
 	if self.bat == 'bvt':
             bat = 'BVT'
-        elif self.bat == 'bst':
-            bat = 'BST'
-	elif self.bat == 'fvt_inktank':
-            bat = 'FVT Inktank'
+	elif self.bat == 'ceph_qa':
+            bat = 'Ceph QA Origin'
         else:
-            bat = 'FVT Storm'
+            bat = 'Custom'
         subject = "%s Execution %s" % ( bat, CURRENT_DATE_WITHOUT_SPACE)
         from_addr = 'vu@mellanox.com'
 	patter = re.compile('#')

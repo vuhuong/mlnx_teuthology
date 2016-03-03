@@ -1,0 +1,2 @@
+rbd/cli/{base/install.yaml cachepool/none.yaml clusters/fixed-1.yaml features/layering.yaml msgr-failures/many.yaml workloads/rbd_cli_copy.yaml}
+rbd/cli/{base/install.yaml cachepool/none.yaml clusters/fixed-1.yaml features/object_map.yaml msgr-failures/few.yaml workloads/rbd_cli_copy.yaml}

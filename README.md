@@ -127,7 +127,7 @@ o Provide disks/partitions infomation on each OSD node
 
 o Create target file on runner-host
   The target file(s) will have .yaml extension
-  Ideally one .yaml file has to be created for each test suite (bvt, fvt, etc...)
+  Ideally one .yaml file has to be created for each test suite (bvt, ceph_qa, etc...)
   This file will be one of the input parameters to run the test automation suite.
 
   "~/mlnx_teuthology/target_bvt_sample_xio.yaml" is an example.

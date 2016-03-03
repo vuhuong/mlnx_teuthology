@@ -39,7 +39,7 @@ class Runner:
         parser.add_option("-t", dest="targetfile", type="string",
                           help="Target file containing host info")
         parser.add_option("-b", dest="bat", type="string",
-                          help="bat = bvt, bst, fvt_inktank, fvt_storm")
+                          help="bat = bvt, ceph_qa")
         parser.add_option("-s", dest="set_number", type="int",
                           help="set_number = 1, 2, 3,...execution set number,"
                                " not mandatory for bvt ")
@@ -85,7 +85,7 @@ class Runner:
             raise RunnerError("Target file %s is not passed or does not exist" % (self.targetfile))
         #create log folder if not existing
         if self.bat not in self.bat_list:
-            raise RunnerError("Invalid bat type %s, provide bvt, bst, fvt_inktank or fvt_storm")
+            raise RunnerError("Invalid bat type %s, provide bvt, ceph_qa")
         #check if set_number is provided, not mendatory for bvt
         if self.bat != 'bvt':
             if not self.set_number:

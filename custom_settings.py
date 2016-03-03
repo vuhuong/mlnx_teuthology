@@ -2,11 +2,11 @@
 User will require to update this file.
 settings.py will get updated using custom_settings.py
 """
-RUN_TYPE = ['bvt', 'bst', 'fvt_inktank', 'fvt_storm']
+RUN_TYPE = ['bvt', 'ceph_qa']
 
 DEFAULT_RUN_LIST = {
 'bvt' : 'runlist/bvt_runlist',
-'bst' : 'runlist/bst_runlist'}
+'ceph_qa' : 'runlist/ceph_qa_runlist'}
 
 #for emails not required to send mail
 #either comment it using '#' or remove them
@@ -20,4 +20,4 @@ SMTP_SERVER = ''
 
 LOG_PATH_LOCAL = {
 'bvt' : '/tmp/teuthology/logs/bvt/',
-'bst' : '/tmp/teuthology/logs/bst/'}
+'ceph_qa' : '/tmp/teuthology/logs/ceph_qa/'}

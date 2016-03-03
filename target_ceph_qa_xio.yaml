@@ -1,0 +1,55 @@
+install-package: True
+cleanup-package: True
+check-locks: False
+suite_path: /home/ubuntu/mlnx_teuthology/ceph-qa-suite
+overrides:
+ ceph:
+    conf:
+       global:
+          ms type: xio
+          enable experimental unrecoverable data corrupting features: ms-type-xio
+          xio queue depth: 128
+          xio mp min : 0
+          xio mp max 64: 0
+          xio mp max 256: 0
+          xio mp max 1k: 0
+          xio mp max page: 0
+          xio portal threads: 2 
+          debug xio: 2
+          mon pg warn min per osd: 2
+         # osd crush chooseleaf type: 0
+          osd pool default size: 2
+          public network: 12.20.0.0/16
+          cluster network: 12.20.0.0/16
+          debug ms: 2
+         # auth supported: cephx
+          auth supported: none
+          auth service required: none
+          auth client required: none
+          auth cluster required: none
+
+ install:
+   local: /home/ubuntu/mlnx_teuthology/local_build
+ workunit:
+   branch: master
+
+roles:
+#Assuming A4 config. 4 hosts connected to same Chassis
+#Node1: [Monitor, Client, List of OSD's]
+- [mon.a, osd.0, client.0]
+#Node2: [Monitor, List of OSD's]
+- [mon.b, osd.1, osd.2]
+#Node3: [Monitor, List of OSD's]
+#- [mon.c, osd.4, osd.5,]
+
+targets:
+    ubuntu@vlab-018-r1: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmd9X/UXKv5Z5Wp/s+s+mR9wI9EFbImd/KXKs0o1GRoY/zVELhA+ezU2xBaMxHkG4SvQ6bmpemU4oeFb9llr1sGXFjFe5Ib0ABPpG2mDo84FtDupzhD4cfxHHelVltmtx5JWiEWmhTLousrMT4BoZLlCGZzAfDkyT2Y17DMFvO2UNpP6H8Mk/34gfR8nn2EQCw5WbDy/6OgSv6l7bMaczUBhu4CQjSxDMYGrVeQ9g6wq9K7+eT2TEDoegYdcBrGm1+604kPLFgK7lzoo98CL3y644+d1MLdJHMZLvrOjSCCD/44sZsO6V+RV09VaSzEg7fYbJKFJI+GbYe6hQqf+0X
+
+#Copy key from ~/.ssh/id_rsa.pub of cluster node2
+    ubuntu@vlab-019-r1: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCq+bXaqZLjZ4gJLNw/1CUw272wLJrvl8m1CVe13TVjot/yjCfgbszwM3/vbRlBSAMAnpz9c304K1TayEHDUV5mgBYTpsyaFpUtLaDshYdF81sY33rtj/o3nHd6XfWiZlGjFJLH6GgN/2TpwT+8rPr5+Pgup0ka+NYojTvRI5kf6J1m+BmyIAYce2Gu6o1GG3WveaMCE+QgEyB7iTbib7wwTH+WZFnU/oSOprAwgY/8BU7WS5FbYCLvbVMSyk+tqepwUq0nTI7aBZ6IiKWQyeDtUc5DPlnAnDKJeUvgLctU+O/Ca+8EwtmeHVAIdxYfLuAaVdGHpsD1hMgrGYwGu/Vl
+
+#Copy key from ~/.ssh/id_rsa.pub of cluster node3
+#    ubuntu@vlab-020-r1: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDb6jGK/bx34LYJy9HgtvzXZwzOozqd6L3XuV0cxnY1N7ODWfdQHMEF4wZksWBEOe3P49anoTl92W7zQ6FoSHn9i4HhisJzETtznxIW8adqv3EvC8wML/tubnLFDuh+ASicXJozjjTpKT1xZ1CpB2u0i5mGVQCqtzavNOcFn+ayu1LSqCayImW0H5g+3I+AUrpARj0Xcv8g3BHHyic8HOCUzXIUEioWrIenuAX1xhND7RFiK8SKq0YEux8zht0c6tzZDIcZ8zaSun1TI0L6sY8EI8QHWKbkmycAY0LsSADu/kTmT7oR1DuB9mtQrDAgZhT9ajIfgBTUflcrUEj/z/q5
+
+tasks:
+- clock:
